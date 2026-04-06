@@ -64,7 +64,7 @@ TITLE STYLE (HIGH PRICE):
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.GPT_API_KEY}`,
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
         model: "gpt-5.1",
@@ -334,6 +334,7 @@ OUTPUT FORMAT
     });
 
     const data = await res.json();
+    console.log("API返回：", data);
 
     return NextResponse.json({
       result: data.choices?.[0]?.message?.content || "",

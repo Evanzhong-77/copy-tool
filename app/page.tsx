@@ -15,6 +15,9 @@ export default function Home() {
     occasions: "",
     price: "",
     keywords: "",
+    keyword1: "",
+    keyword2: "",
+    keyword3: "",
   });
 
   const [result, setResult] = useState({
@@ -195,6 +198,10 @@ export default function Home() {
             {Input("佩戴场景", "occasions", "wedding")}
             {Input("价格（自动影响文案风格）", "price", "如 149.99")}
             {Input("关键词", "keywords", "moissanite ring")}
+            {Input("关键词1（核心）", "keyword1")}
+            {Input("关键词2", "keyword2")}
+            {Input("关键词3", "keyword3")}
+            {Input("备注（控制文案结构）", "notes")}
 
             <button
               onClick={handleGenerate}

@@ -198,7 +198,86 @@ INPUT INFORMATION
 - Design Highlights: {designHighlights}
 - Occasions: {occasions}
 - Package Content: {packageContent}
-- Keywords: {keywords}
+- Keywords: ${prompt.keywords}
+
+- Priority Keywords:
+  ${prompt.keyword1}
+  ${prompt.keyword2}
+  ${prompt.keyword3}
+
+- Notes: ${prompt.notes}
+NOTES OVERRIDE RULE (HIGHEST PRIORITY):
+
+- If Notes is NOT empty:
+  → You MUST follow the instructions in Notes
+
+- Notes can define:
+  - Bullet structure (what each bullet should be about)
+  - Title direction
+  - Selling angle
+  - Writing style
+
+- When Notes exist:
+  → IGNORE default bullet structure rules if they conflict
+
+- Notes OVERRIDE all other rules except:
+- basic output format
+- HUMAN-LIKE WRITING ENFORCEMENT
+
+- If Notes provides a clear structure (e.g. Bullet 1 = material, Bullet 2 = plating):
+  → You MUST follow that structure exactly
+
+  NOTES INTERPRETATION RULE (CRITICAL):
+
+- Notes may be written in natural language, not structured format.
+
+- You MUST first interpret Notes and extract:
+  → intended bullet structure
+  → key selling focus
+  → tone / style direction
+
+- If Notes are unclear:
+  → infer the most logical structure based on intent
+
+- If Notes partially define structure:
+  → follow defined parts
+  → fill remaining bullets logically
+
+- DO NOT require strict formatting from Notes
+
+  PRIORITY KEYWORD ENFORCEMENT (CRITICAL):
+
+- The 3 Priority Keywords MUST be used in the content.
+
+- Each priority keyword MUST appear:
+  - At least once in Title OR Bullet Points
+
+- DO NOT ignore priority keywords even if they feel repetitive
+
+- If priority keywords are missing in output:
+  → the result is considered INVALID
+
+  HUMAN-LIKE WRITING ENFORCEMENT (CRITICAL):
+
+- Write like an experienced Amazon operator, NOT a copywriter.
+
+- Avoid exaggerated or dramatic language.
+
+- Avoid phrases like:
+  "stunning", "breathtaking", "timeless beauty", "luxury feel", "elevated elegance"
+
+- Use practical, buyer-focused wording:
+  → what it looks like on hand
+  → how it feels to wear
+  → whether it fits daily use
+  → whether it matches expectations
+
+- Keep sentences slightly imperfect and natural
+  → do NOT sound overly polished or poetic
+
+- The content should feel like:
+  → written by a seller who understands customers
+  → not a marketing script
 
 ----------------------
 POSITIONING LOGIC

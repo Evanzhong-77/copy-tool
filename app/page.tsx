@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [form, setForm] = useState({
-    styleCode: "",
+    styleMode: "",
     productType: "",
     mainStoneSize: "",
     totalCaratWeight: "",

@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function Home() {
+  
   const [form, setForm] = useState({
     styleMode: "",
     productType: "",
@@ -31,7 +32,34 @@ export default function Home() {
     html: "",
   });
 
-  const [loading, setLoading] = useState(false);
+const [authed, setAuthed] = useState(false);
+const [inputPwd, setInputPwd] = useState("");
+
+const [loading, setLoading] = useState(false);
+  if (!authed) {
+  return (
+    <div style={{ padding: 40 }}>
+      <h2>Access Required</h2>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        value={inputPwd}
+        onChange={(e) => setInputPwd(e.target.value)}
+      />
+      <button
+        onClick={() => {
+          if (inputPwd === "chengyuanzhubao") {
+            setAuthed(true);
+          } else {
+            alert("Wrong password");
+          }
+        }}
+      >
+        Enter
+      </button>
+    </div>
+  );
+}
 
   function handleChange(e: any) {
     setForm({ ...form, [e.target.name]: e.target.value });

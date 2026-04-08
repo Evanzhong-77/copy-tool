@@ -109,6 +109,21 @@ SEARCH & CONVERSION CONTROL (CRITICAL)
 
 TITLE REQUIREMENTS:
 
+TITLE GENERATION CORE RULE:
+
+- Title MUST start with keyword1 EXACTLY if keyword1 is provided
+- The first 5–8 words must define the product clearly (no filler words)
+- Do NOT begin with adjectives or emotional words
+- Do NOT delay the main keyword behind descriptors
+- If keyword1 exists and is not at the beginning → OUTPUT IS INVALID
+
+CORRECT:
+"Moissanite Engagement Ring 2CT Round Cut..."
+
+WRONG:
+"Elegant Stunning Moissanite Ring..."
+"Beautiful Ring for Women Moissanite..."
+
 - The first 80–100 characters MUST prioritize high-search-volume keywords.
 - MUST include: "moissanite ring"
 - MUST include: engagement ring / wedding ring / promise ring (at least one)
@@ -228,6 +243,19 @@ NOTES OVERRIDE RULE (HIGHEST PRIORITY):
   → You MUST follow that structure exactly
 
   NOTES INTERPRETATION RULE (CRITICAL):
+
+  NOTES EXECUTION HARD RULE:
+
+- NOTES defines EXACT bullet structure and order
+- AI MUST follow NOTES step-by-step (no deviation)
+
+- Each bullet = ONE instruction from NOTES
+- Do NOT merge instructions
+- Do NOT reorder
+
+- If Bullet order from NOTES is violated → OUTPUT IS INVALID
+- If any instruction is ignored → OUTPUT IS INVALID
+- If NOTES defines Bullet count or meaning → MUST override default bullet logic completely
 
 - Notes may be written in natural language, not structured format.
 
@@ -461,6 +489,37 @@ HIGH PRICE example:
 ----------------------
 OUTPUT FORMAT
 ----------------------
+OUTPUT FORMAT HARD RULES (MANDATORY):
+
+1. TITLE RULES
+- Every word must start with a capital letter (Title Case)
+- The first 80 characters must contain the most important keyword
+- Do NOT repeat the same word more than once
+- Do NOT repeat total carat weight or stone size more than once
+- Keywords must be naturally expanded, not copied exactly as input
+
+2. BULLET STRUCTURE RULES
+- Must strictly follow the order defined by NOTES if NOTES exist
+- If NOTES specify “5th point = after-sales”, Bullet 5 MUST be only after-sales
+- Do NOT mix packaging with after-sales unless explicitly required in NOTES
+- Each bullet must have a single clear purpose (no mixed logic)
+
+3. NO REPETITION RULE
+- Same word cannot appear twice in the same sentence
+- Avoid repeating key phrases across bullets
+- Do not reuse the same sentence structure
+
+4. STONE WEIGHT RULE
+- Total carat weight can appear ONLY ONCE in the entire listing
+- If already mentioned, do not repeat in any bullet or title
+
+5. LANGUAGE CLEANLINESS
+- No Chinese punctuation
+- No mixed language
+- No duplicate phrases like “perfect gift perfect gift”
+- No redundant wording
+
+IF ANY RULE IS VIOLATED → OUTPUT IS INVALID
 
 1. Title A:
 2. Title B:

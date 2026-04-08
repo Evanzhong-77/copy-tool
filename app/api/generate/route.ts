@@ -125,10 +125,7 @@ WRONG:
 "Beautiful Ring for Women Moissanite..."
 
 - The first 80–100 characters MUST prioritize high-search-volume keywords.
-- MUST include: "moissanite ring"
-- MUST include: engagement ring / wedding ring / promise ring (at least one)
 - MUST include: shape + main stone carat ONLY (NO total carat weight duplication)
-- MUST include: for women / bridal / anniversary / gift (at least 2 modifiers)
 - AVOID niche, poetic, or low-search words
 
 TITLE KEYWORD STACKING (CRITICAL):
@@ -150,19 +147,66 @@ TITLE KEYWORD STACKING (CRITICAL):
 
 - The title should feel slightly "keyword dense" but still readable.
 
-BULLET POINT REQUIREMENTS:
+### BULLET SIMPLIFICATION RULE (MANDATORY)
+
+- Each bullet MUST be short, sharp, and benefit-driven
+- Max length: 12–18 words
+
+- Structure:
+  [Feature] + [Immediate Benefit]
+
+- Only ONE core keyword per bullet
+- Do NOT force keyword usage
+
+- Remove all filler phrases:
+  (perfect for, ideal for, designed for, this ring is, etc.)
+
+- No explanation, no storytelling
+
+Violation → INVALID
+
+
+### BULLET STRUCTURE RULE (MANDATORY)
 
 - Bullet 1 MUST combine: stone size + visual impact + core selling point
-- Each bullet MUST include 2–4 HIGH-search-volume keywords naturally
 - Focus on real buyer concerns: size appearance, sparkle, durability, comfort, occasions
 - Avoid repeated meaning across bullets
 - NO generic luxury filler content
 
+### SELLING PRIORITY RULE (MANDATORY)
+
+- Each bullet MUST deliver a strong, clear reason to buy
+
+- Priority order:
+  1. Visual impact (size, presence)
+  2. Material quality (real value)
+  3. Wear experience (comfort, daily use)
+  4. Use case (proposal, gift, occasion)
+  5. Confidence (packaging, trust)
+
+- If a sentence does NOT increase desire to buy → REMOVE it
+
+- Every bullet must answer:
+  "Why should I buy this instead of others?"
+
+- Avoid neutral information
+- Avoid descriptive-only sentences
+
+Violation → INVALID
+
 KEYWORD DISTRIBUTION RULE:
 
-- Keywords MUST be distributed across title + bullets
-- Core keywords:
-  moissanite ring, engagement ring, wedding ring, promise ring, anniversary ring
+- Keywords should be distributed across title + bullets when natural
+Core keywords (REFERENCE ONLY):
+
+- moissanite ring
+- engagement ring
+- wedding ring
+- promise ring
+- anniversary ring
+
+- Use naturally when relevant
+- Do NOT force usage
 - DO NOT stack keywords unnaturally
 
 CONTENT QUALITY RULE:
@@ -365,12 +409,30 @@ Title B:
 - Avoid weak filler words like "high sparkle"
 - Avoid stacking redundant words (wedding + bridal + proposal overload)
 - Keep title clean, but slightly more aggressive for click-through
+### CTR TITLE BOOST RULE (MANDATORY)
+
+- Title B MUST create immediate visual impact in search results
+
+- Use ONE of the following high-impact angles:
+  1. Size dominance (e.g. "3CT Bold Look", "Large Carat Presence")
+  2. Visual contrast (e.g. "Looks Bigger On Hand")
+  3. Statement positioning (e.g. "Statement Ring", "Eye-Catching Size")
+
+- MUST trigger curiosity or comparison instinct within 3 seconds
+
+- Avoid weak phrases:
+  "nice", "beautiful", "elegant", "sparkly"
+
+- Avoid repeating words already used in Title A
+
+- Title B should feel:
+  more aggressive, more visual, more scroll-stopping
+
+If Title B feels similar to Title A → INVALID
 
 ----------------------
 BULLET POINT RULES
 ----------------------
-
-Write EXACTLY 5 bullet points (200–300 characters each)
 
 Structure:
 

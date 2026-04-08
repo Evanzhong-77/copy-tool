@@ -32,31 +32,73 @@ export default function Home() {
     html: "",
   });
 
+  const [versionId, setVersionId] = useState("");
+
 const [authed, setAuthed] = useState(false);
 const [inputPwd, setInputPwd] = useState("");
-
 const [loading, setLoading] = useState(false);
+
   if (!authed) {
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Access Required</h2>
-      <input
-        type="password"
-        placeholder="Enter Password"
-        value={inputPwd}
-        onChange={(e) => setInputPwd(e.target.value)}
-      />
-      <button
-        onClick={() => {
-          if (inputPwd === "chengyuanzhubao") {
-            setAuthed(true);
-          } else {
-            alert("Wrong password");
-          }
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#fff",
+      }}
+    >
+      <div
+        style={{
+          width: 320,
+          padding: 30,
+          borderRadius: 12,
+          background: "#fff",
+          boxShadow: "0 0 20px rgba(0,0,0,0.05)",
+          textAlign: "center",
         }}
       >
-        Enter
-      </button>
+        <h2 style={{ marginBottom: 20, color: "#000" }}>
+          请输入访问密码
+        </h2>
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={inputPwd}
+          onChange={(e) => setInputPwd(e.target.value)}
+          style={{
+            width: "100%",
+            height: 40,
+            padding: "0 10px",
+            borderRadius: 8,
+            border: "1px solid #000",
+            color: "#000",
+            marginBottom: 15,
+          }}
+        />
+
+        <button
+          onClick={() => {
+            if (inputPwd === "chengyuanzhubao") {
+              setAuthed(true);
+            } else {
+              alert("Wrong password");
+            }
+          }}
+          style={{
+            width: "100%",
+            height: 40,
+            background: "#000",
+            color: "#fff",
+            borderRadius: 8,
+            cursor: "pointer",
+          }}
+        >
+          进入系统
+        </button>
+      </div>
     </div>
   );
 }
@@ -67,19 +109,14 @@ const [loading, setLoading] = useState(false);
 
   // ✅ 必填校验
   const requiredFields = [
-    "styleCode",
-    "productType",
-    "mainStoneSize",
-    "totalCaratWeight",
-    "stoneShape",
-    "material",
-    "plating",
-    "designHighlights",
-    "occasions",
-    "price",
-"keywords",
-"priceLevel",
-  ];
+  "productType",
+  "mainStoneSize",
+  "stoneShape",
+  "material",
+  "plating",
+  "designHighlights",
+  "price",
+];
 
   const isFormValid = requiredFields.every(
     (key) => form[key as keyof typeof form]?.trim() !== ""
@@ -121,12 +158,48 @@ const [loading, setLoading] = useState(false);
         b5: get("7\\. Bullet Point 5"),
         html: get("8\\. HTML Description"),
       });
+
+      setVersionId(Math.random().toString(36).substring(2, 6).toUpperCase());
+
     } catch (err) {
       alert("生成失败，请重试");
     }
 
     setLoading(false);
   }
+
+  function copyAll() {
+  const fullText = `
+版本ID: ${versionId}
+
+Title A:
+${result.titleA}
+
+Title B:
+${result.titleB}
+
+Bullet 1:
+${result.b1}
+
+Bullet 2:
+${result.b2}
+
+Bullet 3:
+${result.b3}
+
+Bullet 4:
+${result.b4}
+
+Bullet 5:
+${result.b5}
+
+HTML Description:
+${result.html}
+  `;
+
+  navigator.clipboard.writeText(fullText);
+  alert("已复制完整文案");
+}
 
   const Input = (label: string, name: string, placeholder = "") => (
     <div style={{ marginBottom: 14 }}>
@@ -252,6 +325,23 @@ const [loading, setLoading] = useState(false);
 
           {/* 右侧输出 */}
           <div>
+            <button
+  onClick={copyAll}
+  style={{
+    marginBottom: 10,
+    padding: "8px 12px",
+    borderRadius: 8,
+    background: "#000",
+    color: "#fff",
+    cursor: "pointer",
+  }}
+>
+  一键复制完整文案
+</button>
+
+<div style={{ marginBottom: 10, fontWeight: "bold" }}>
+  文案版本：{versionId}
+</div>
             {Output("Title A（SEO）", result.titleA)}
             {Output("Title B（CTR）", result.titleB)}
             {Output("Bullet Point 1", result.b1)}

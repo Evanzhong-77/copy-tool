@@ -5,21 +5,26 @@ import { useState } from "react";
 export default function Home() {
   
   const [form, setForm] = useState({
-    styleMode: "",
-    productType: "",
-    mainStoneSize: "",
-    totalCaratWeight: "",
-    stoneShape: "",
-    material: "",
-    plating: "",
-    designHighlights: "",
-    occasions: "",
-    price: "",
-    keywords: "",
-    keyword1: "",
-    keyword2: "",
-    keyword3: "",
-  });
+  styleMode: "",
+  productType: "",
+  diamondWeight: "",
+  stoneShape: "",
+  material: "",
+  plating: "",
+  designHighlights: "",
+  occasions: "",
+  price: "",
+  bulletKeyword1: "",
+  bulletKeyword2: "",
+  bulletKeyword3: "",
+  bulletKeyword4: "",
+  bulletKeyword5: "",
+  bulletDirection1: "",
+  bulletDirection2: "",
+  bulletDirection3: "",
+  bulletDirection4: "",
+  bulletDirection5: "",
+});
 
   const [result, setResult] = useState({
     titleA: "",
@@ -31,8 +36,6 @@ export default function Home() {
     b5: "",
     html: "",
   });
-
-  const [versionId, setVersionId] = useState("");
 
 const [authed, setAuthed] = useState(false);
 const [inputPwd, setInputPwd] = useState("");
@@ -110,7 +113,7 @@ const [loading, setLoading] = useState(false);
   // ✅ 必填校验
   const requiredFields = [
   "productType",
-  "mainStoneSize",
+  "diamondWeight",
   "stoneShape",
   "material",
   "plating",
@@ -137,7 +140,7 @@ const [loading, setLoading] = useState(false);
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: form }),
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
@@ -159,8 +162,6 @@ const [loading, setLoading] = useState(false);
         html: get("8\\. HTML Description"),
       });
 
-      setVersionId(Math.random().toString(36).substring(2, 6).toUpperCase());
-
     } catch (err) {
       alert("生成失败，请重试");
     }
@@ -170,8 +171,6 @@ const [loading, setLoading] = useState(false);
 
   function copyAll() {
   const fullText = `
-版本ID: ${versionId}
-
 Title A:
 ${result.titleA}
 
@@ -288,21 +287,27 @@ ${result.html}
         >
           {/* 左侧输入 */}
           <div>
-            {Input("款号", "styleCode", "如 HR0123")}
             {Input("产品类型", "productType", "RING")}
-            {Input("主石尺寸", "mainStoneSize", "2CT")}
-            {Input("总克拉重", "totalCaratWeight", "3CTTW")}
+            {Input("钻石重量", "diamondWeight", "如 5.3CTTW (3CT)")}
             {Input("石型", "stoneShape", "Round")}
             {Input("材质", "material", "S925")}
             {Input("电镀", "plating", "18K White Gold")}
             {Input("设计亮点", "designHighlights", "solitaire / halo")}
             {Input("佩戴场景", "occasions", "wedding")}
             {Input("价格（自动影响文案风格）", "price", "如 149.99")}
-            {Input("关键词", "keywords", "moissanite ring")}
-            {Input("关键词1（核心）", "keyword1")}
-            {Input("关键词2", "keyword2")}
-            {Input("关键词3", "keyword3")}
-            {Input("备注（控制文案结构）", "notes")}
+
+            {Input("Title埋词", "styleMode", "如 moissanite engagement ring")}
+            {Input("Bullet Point 1埋词", "bulletKeyword1")}
+            {Input("Bullet Point 2埋词", "bulletKeyword2")}
+            {Input("Bullet Point 3埋词", "bulletKeyword3")}
+            {Input("Bullet Point 4埋词", "bulletKeyword4")}
+            {Input("Bullet Point 5埋词", "bulletKeyword5")}
+
+            {Input("Bullet Point 1方向", "bulletDirection1")}
+            {Input("Bullet Point 2方向", "bulletDirection2")}
+            {Input("Bullet Point 3方向", "bulletDirection3")}
+            {Input("Bullet Point 4方向", "bulletDirection4")}
+            {Input("Bullet Point 5方向", "bulletDirection5")}
 
             <button
               onClick={handleGenerate}
@@ -338,21 +343,11 @@ ${result.html}
 >
   一键复制完整文案
 </button>
-
-<div style={{ marginBottom: 10, fontWeight: "bold" }}>
-  文案版本：{versionId}
-</div>
-            {Output("Title A（SEO）", result.titleA)}
-            {Output("Title B（CTR）", result.titleB)}
-            {Output("Bullet Point 1", result.b1)}
-            {Output("Bullet Point 2", result.b2)}
-            {Output("Bullet Point 3", result.b3)}
-            {Output("Bullet Point 4", result.b4)}
-            {Output("Bullet Point 5", result.b5)}
-            {Output("HTML Description", result.html)}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+{Output("Title A（SEO）", result.titleA)}
+{Output("Title B（CTR）", result.titleB)}
+{Output("Bullet Point 1", result.b1)}
+{Output("Bullet Point 2", result.b2)}
+{Output("Bullet Point 3", result.b3)}
+{Output("Bullet Point 4", result.b4)}
+{Output("Bullet Point 5", result.b5)}
+{Output("HTML Description", result.html)}

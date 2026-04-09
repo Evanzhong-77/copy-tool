@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { prompt } = await req.json();
+    const prompt = await req.json();
    const { price } = prompt;
 
 let priceLevel: "low" | "mid" | "high" = "mid";
@@ -111,23 +111,6 @@ TITLE REQUIREMENTS:
 
 TITLE GENERATION CORE RULE:
 
-- Title MUST start with keyword1 EXACTLY if keyword1 is provided
-- The first 5–8 words must define the product clearly (no filler words)
-- Do NOT begin with adjectives or emotional words
-- Do NOT delay the main keyword behind descriptors
-- If keyword1 exists and is not at the beginning → OUTPUT IS INVALID
-
-CORRECT:
-"Moissanite Engagement Ring 2CT Round Cut..."
-
-WRONG:
-"Elegant Stunning Moissanite Ring..."
-"Beautiful Ring for Women Moissanite..."
-
-- The first 80–100 characters MUST prioritize high-search-volume keywords.
-- MUST include: shape + main stone carat ONLY (NO total carat weight duplication)
-- AVOID niche, poetic, or low-search words
-
 TITLE KEYWORD STACKING (CRITICAL):
 
 - The title MUST aggressively stack high-search keywords in the first half.
@@ -194,21 +177,6 @@ Violation → INVALID
 
 Violation → INVALID
 
-KEYWORD DISTRIBUTION RULE:
-
-- Keywords should be distributed across title + bullets when natural
-Core keywords (REFERENCE ONLY):
-
-- moissanite ring
-- engagement ring
-- wedding ring
-- promise ring
-- anniversary ring
-
-- Use naturally when relevant
-- Do NOT force usage
-- DO NOT stack keywords unnaturally
-
 CONTENT QUALITY RULE:
 
 - Every bullet must have a different purpose
@@ -246,88 +214,35 @@ STRICT OUTPUT RULES (MANDATORY)
 INPUT INFORMATION
 ----------------------
 
-- Product Type: {productType}
-- Style Type: {styleType}
-- Main Stone Size: {mainStoneSize}
-- Total Carat Weight: {totalCaratWeight}
-- Stone Shape: {stoneShape}
-- Stone Quality: D Color, VVS1
-- Material: {material}
-- Plating: {plating}
-- Design Highlights: {designHighlights}
-- Occasions: {occasions}
-- Package Content: {packageContent}
-- Keywords: ${prompt.keywords}
+- Product Type: ${prompt.productType}
+- Diamond Weight: ${prompt.diamondWeight}
+- Stone Shape: ${prompt.stoneShape}
+- Material: ${prompt.material}
+- Plating: ${prompt.plating}
+- Design Highlights: ${prompt.designHighlights}
+- Occasions: ${prompt.occasions}
 
-- Priority Keywords:
-  ${prompt.keyword1}
-  ${prompt.keyword2}
-  ${prompt.keyword3}
+- Title Keyword: ${prompt.styleMode}
 
-- Notes: ${prompt.notes}
-NOTES OVERRIDE RULE (HIGHEST PRIORITY):
+- Bullet 1 Keyword: ${prompt.bulletKeyword1}
+- Bullet 2 Keyword: ${prompt.bulletKeyword2}
+- Bullet 3 Keyword: ${prompt.bulletKeyword3}
+- Bullet 4 Keyword: ${prompt.bulletKeyword4}
+- Bullet 5 Keyword: ${prompt.bulletKeyword5}
 
-- If Notes is NOT empty:
-  → You MUST follow the instructions in Notes
+- Bullet 1 Direction: ${prompt.bulletDirection1}
+- Bullet 2 Direction: ${prompt.bulletDirection2}
+- Bullet 3 Direction: ${prompt.bulletDirection3}
+- Bullet 4 Direction: ${prompt.bulletDirection4}
+- Bullet 5 Direction: ${prompt.bulletDirection5}
 
-- Notes can define:
-  - Bullet structure (what each bullet should be about)
-  - Title direction
-  - Selling angle
-  - Writing style
+----------------------
+DIAMOND WEIGHT RULE (MANDATORY):
 
-- When Notes exist:
-  → IGNORE default bullet structure rules if they conflict
-
-- Notes OVERRIDE all other rules except:
-- basic output format
-- HUMAN-LIKE WRITING ENFORCEMENT
-
-- If Notes provides a clear structure (e.g. Bullet 1 = material, Bullet 2 = plating):
-  → You MUST follow that structure exactly
-
-  NOTES INTERPRETATION RULE (CRITICAL):
-
-  NOTES EXECUTION HARD RULE:
-
-- NOTES defines EXACT bullet structure and order
-- AI MUST follow NOTES step-by-step (no deviation)
-
-- Each bullet = ONE instruction from NOTES
-- Do NOT merge instructions
-- Do NOT reorder
-
-- If Bullet order from NOTES is violated → OUTPUT IS INVALID
-- If any instruction is ignored → OUTPUT IS INVALID
-- If NOTES defines Bullet count or meaning → MUST override default bullet logic completely
-
-- Notes may be written in natural language, not structured format.
-
-- You MUST first interpret Notes and extract:
-  → intended bullet structure
-  → key selling focus
-  → tone / style direction
-
-- If Notes are unclear:
-  → infer the most logical structure based on intent
-
-- If Notes partially define structure:
-  → follow defined parts
-  → fill remaining bullets logically
-
-- DO NOT require strict formatting from Notes
-
-  PRIORITY KEYWORD ENFORCEMENT (CRITICAL):
-
-- The 3 Priority Keywords MUST be used in the content.
-
-- Each priority keyword MUST appear:
-  - At least once in Title OR Bullet Points
-
-- DO NOT ignore priority keywords even if they feel repetitive
-
-- If priority keywords are missing in output:
-  → the result is considered INVALID
+- Use Diamond Weight EXACTLY as provided
+- MUST appear in Title OR Bullet 1
+- MUST NOT be rewritten or split
+----------------------
 
   HUMAN-LIKE WRITING ENFORCEMENT (CRITICAL):
 
@@ -377,13 +292,11 @@ TITLE RULES (SEO + CTR)
 ----------------------
 
 - Max 200 characters
-- Keyword MUST be at the beginning
 - Must include:
   - "moissanite ring" OR "engagement ring"
   - "D Color VVS1"
 
 - Structure:
-  Core Keyword + Stone Size + Shape + Total Carat + Material + Use Case
 
 ----------------------
 DUAL TITLE RULES (CRITICAL)
@@ -561,9 +474,6 @@ OUTPUT FORMAT HARD RULES (MANDATORY):
 - Keywords must be naturally expanded, not copied exactly as input
 
 2. BULLET STRUCTURE RULES
-- Must strictly follow the order defined by NOTES if NOTES exist
-- If NOTES specify “5th point = after-sales”, Bullet 5 MUST be only after-sales
-- Do NOT mix packaging with after-sales unless explicitly required in NOTES
 - Each bullet must have a single clear purpose (no mixed logic)
 
 3. NO REPETITION RULE
@@ -572,8 +482,8 @@ OUTPUT FORMAT HARD RULES (MANDATORY):
 - Do not reuse the same sentence structure
 
 4. STONE WEIGHT RULE
-- Total carat weight can appear ONLY ONCE in the entire listing
-- If already mentioned, do not repeat in any bullet or title
+- Diamond Weight can appear ONLY ONCE in the entire listing
+- If already used, do NOT repeat in Title or other Bullets
 
 5. LANGUAGE CLEANLINESS
 - No Chinese punctuation

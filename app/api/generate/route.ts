@@ -107,10 +107,6 @@ You are writing a listing that must SELL.
 SEARCH & CONVERSION CONTROL (CRITICAL)
 ----------------------
 
-TITLE REQUIREMENTS:
-
-TITLE GENERATION CORE RULE:
-
 TITLE KEYWORD STACKING (CRITICAL):
 
 - The title MUST aggressively stack high-search keywords in the first half.
@@ -129,25 +125,6 @@ TITLE KEYWORD STACKING (CRITICAL):
 - Avoid wasting early title space on low-value words.
 
 - The title should feel slightly "keyword dense" but still readable.
-
-### BULLET SIMPLIFICATION RULE (MANDATORY)
-
-- Each bullet MUST be short, sharp, and benefit-driven
-- Max length: 12–18 words
-
-- Structure:
-  [Feature] + [Immediate Benefit]
-
-- Only ONE core keyword per bullet
-- Do NOT force keyword usage
-
-- Remove all filler phrases:
-  (perfect for, ideal for, designed for, this ring is, etc.)
-
-- No explanation, no storytelling
-
-Violation → INVALID
-
 
 ### BULLET STRUCTURE RULE (MANDATORY)
 
@@ -237,6 +214,48 @@ INPUT INFORMATION
 - Bullet 5 Direction: ${prompt.bulletDirection5}
 
 ----------------------
+BULLET CONTROL SYSTEM (CRITICAL)
+----------------------
+
+Bullet Direction is the HIGHEST PRIORITY.
+
+RULES:
+
+1. If Bullet Direction is provided:
+- You MUST strictly follow that direction
+- You MUST NOT ignore it
+- You MUST NOT replace it with your own idea
+
+2. If Bullet Direction is EMPTY:
+
+- You MUST use Reference Copy as structure and idea source
+
+Reference Copy:
+${prompt.referenceCopy}
+
+- Extract writing style and structure
+- Generate similar type of bullet content
+- Do NOT copy wording directly
+- Keep same level of detail and strength
+
+- If BOTH Bullet Direction AND Reference Copy are EMPTY:
+  → You MUST fallback to default bullet structure rules
+  → You MUST still produce strong, detailed bullet content
+
+3. Bullet Keyword Usage:
+- If provided, MUST appear naturally in that bullet
+- Do NOT force or repeat
+
+4. Bullet Quality Upgrade:
+- Each bullet SHOULD be 14–20 words
+- MUST contain:
+  → a concrete feature
+  → a clear benefit
+- MUST feel like a real selling point
+
+If any bullet is generic, short, or vague → INVALID
+
+----------------------
 DIAMOND WEIGHT RULE (MANDATORY):
 
 - Use Diamond Weight EXACTLY as provided
@@ -295,53 +314,6 @@ TITLE RULES (SEO + CTR)
 - Must include:
   - "moissanite ring" OR "engagement ring"
   - "D Color VVS1"
-
-- Structure:
-
-----------------------
-DUAL TITLE RULES (CRITICAL)
-----------------------
-
-You MUST generate TWO different titles:
-
-Title A:
-- SEO focused
-- clean, keyword optimized
-- prioritize keyword coverage and readability
-- no aggressive marketing wording
-
-Title B:
-- CTR focused
-- more aggressive and attention-grabbing
-- include high-impact words when appropriate:
-  "Large Carat", "Statement Ring", "Bold Look", "High Carat"
-- must create stronger click appeal vs competitors
-
-- MUST include at least ONE high-impact CTR phrase when appropriate
-- Must create differentiation vs smaller carat competitors
-- Avoid weak filler words like "high sparkle"
-- Avoid stacking redundant words (wedding + bridal + proposal overload)
-- Keep title clean, but slightly more aggressive for click-through
-### CTR TITLE BOOST RULE (MANDATORY)
-
-- Title B MUST create immediate visual impact in search results
-
-- Use ONE of the following high-impact angles:
-  1. Size dominance (e.g. "3CT Bold Look", "Large Carat Presence")
-  2. Visual contrast (e.g. "Looks Bigger On Hand")
-  3. Statement positioning (e.g. "Statement Ring", "Eye-Catching Size")
-
-- MUST trigger curiosity or comparison instinct within 3 seconds
-
-- Avoid weak phrases:
-  "nice", "beautiful", "elegant", "sparkly"
-
-- Avoid repeating words already used in Title A
-
-- Title B should feel:
-  more aggressive, more visual, more scroll-stopping
-
-If Title B feels similar to Title A → INVALID
 
 ----------------------
 BULLET POINT RULES
@@ -494,13 +466,12 @@ OUTPUT FORMAT HARD RULES (MANDATORY):
 IF ANY RULE IS VIOLATED → OUTPUT IS INVALID
 
 1. Title A:
-2. Title B:
-3. Bullet Point 1:
-4. Bullet Point 2:
-5. Bullet Point 3:
-6. Bullet Point 4:
-7. Bullet Point 5:
-8. HTML Description:
+2. Bullet Point 1:
+3. Bullet Point 2:
+4. Bullet Point 3:
+5. Bullet Point 4:
+6. Bullet Point 5:
+7. HTML Description:
 `,
           },
           {

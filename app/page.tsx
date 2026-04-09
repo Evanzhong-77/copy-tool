@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   
-  const [form, setForm] = useState({
+ const [form, setForm] = useState({
   styleMode: "",
   productType: "",
   diamondWeight: "",
@@ -14,28 +14,31 @@ export default function Home() {
   designHighlights: "",
   occasions: "",
   price: "",
+
   bulletKeyword1: "",
   bulletKeyword2: "",
   bulletKeyword3: "",
   bulletKeyword4: "",
   bulletKeyword5: "",
+
   bulletDirection1: "",
   bulletDirection2: "",
   bulletDirection3: "",
   bulletDirection4: "",
   bulletDirection5: "",
+
+  referenceCopy: "",
 });
 
-  const [result, setResult] = useState({
-    titleA: "",
-    titleB: "",
-    b1: "",
-    b2: "",
-    b3: "",
-    b4: "",
-    b5: "",
-    html: "",
-  });
+const [result, setResult] = useState({
+  titleA: "",
+  b1: "",
+  b2: "",
+  b3: "",
+  b4: "",
+  b5: "",
+  html: "",
+});
 
 const [authed, setAuthed] = useState(false);
 const [inputPwd, setInputPwd] = useState("");
@@ -150,17 +153,15 @@ const [loading, setLoading] = useState(false);
         const reg = new RegExp(`${label}:(.*?)(?=\\n\\d+\\. |$)`, "s");
         return text.match(reg)?.[1]?.trim() || "";
       };
-
       setResult({
-        titleA: get("1\\. Title A"),
-        titleB: get("2\\. Title B"),
-        b1: get("3\\. Bullet Point 1"),
-        b2: get("4\\. Bullet Point 2"),
-        b3: get("5\\. Bullet Point 3"),
-        b4: get("6\\. Bullet Point 4"),
-        b5: get("7\\. Bullet Point 5"),
-        html: get("8\\. HTML Description"),
-      });
+  titleA: get("1\\. Title A"),
+  b1: get("3\\. Bullet Point 1"),
+  b2: get("4\\. Bullet Point 2"),
+  b3: get("5\\. Bullet Point 3"),
+  b4: get("6\\. Bullet Point 4"),
+  b5: get("7\\. Bullet Point 5"),
+  html: get("8\\. HTML Description"),
+});
 
     } catch (err) {
       alert("生成失败，请重试");
@@ -169,13 +170,9 @@ const [loading, setLoading] = useState(false);
     setLoading(false);
   }
 
-  function copyAll() {
-  const fullText = `
-Title A:
+async function copyAll() {
+  const fullText = `Title:
 ${result.titleA}
-
-Title B:
-${result.titleB}
 
 Bullet 1:
 ${result.b1}
@@ -193,11 +190,14 @@ Bullet 5:
 ${result.b5}
 
 HTML Description:
-${result.html}
-  `;
+${result.html}`;
 
-  navigator.clipboard.writeText(fullText);
-  alert("已复制完整文案");
+  try {
+    await navigator.clipboard.writeText(fullText);
+    alert("复制成功");
+  } catch (err) {
+    alert("复制失败，请手动复制");
+  }
 }
 
   const Input = (label: string, name: string, placeholder = "") => (
@@ -309,6 +309,8 @@ ${result.html}
             {Input("Bullet Point 4方向", "bulletDirection4")}
             {Input("Bullet Point 5方向", "bulletDirection5")}
 
+            {Input("参考文案（无方向时使用）", "referenceCopy")}
+
             <button
               onClick={handleGenerate}
               disabled={!isFormValid || loading}
@@ -344,7 +346,6 @@ ${result.html}
   一键复制完整文案
 </button>
 {Output("Title A（SEO）", result.titleA)}
-{Output("Title B（CTR）", result.titleB)}
 {Output("Bullet Point 1", result.b1)}
 {Output("Bullet Point 2", result.b2)}
 {Output("Bullet Point 3", result.b3)}

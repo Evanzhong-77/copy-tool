@@ -150,9 +150,19 @@ const [loading, setLoading] = useState(false);
       const text = data.result || "";
 
       const get = (label: string) => {
-        const reg = new RegExp(`${label}:(.*?)(?=\\n\\d+\\. |$)`, "s");
-        return text.match(reg)?.[1]?.trim() || "";
-      };
+  const parts = text.split(label + ":");
+  if (parts.length < 2) return "";
+
+  const after = parts[1];
+
+  const nextIndex = after.search(/\n\d+\./);
+
+  if (nextIndex === -1) {
+    return after.trim();
+  }
+
+  return after.slice(0, nextIndex).trim();
+};
       setResult({
   titleA: get("1\\. Title A"),
   b1: get("3\\. Bullet Point 1"),

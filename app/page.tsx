@@ -356,4 +356,3 @@ ${result.html}
 </div>
 </div>
 );
-}

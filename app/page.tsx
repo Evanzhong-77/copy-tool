@@ -351,3 +351,9 @@ ${result.html}
 {Output("Bullet Point 4", result.b4)}
 {Output("Bullet Point 5", result.b5)}
 {Output("HTML Description", result.html)}
+
+</div>
+</div>
+</div>
+);
+}
